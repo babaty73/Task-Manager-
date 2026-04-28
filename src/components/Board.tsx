@@ -1,11 +1,18 @@
 import TaskColumn from "./TaskColumn";
+import TaskForm from "./TaskForm";
 
 const Board = () => {
-  return (
-    <div className="min-h-screen bg-gray-900 p-6">
-      <h1 className=" flex text-4xl text-blue-600 text-bold font-bold mb-6 justify-center">Task Manager</h1>
+  const handleAddTask = (title: string) => {
+    console.log("Task Added:", { title });
+  };
 
-      <div className="grid grid-cols-3 md:grid-cols-1 gap-4">
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-2xl font-bold mb-6">Task Manager</h1>
+
+      <TaskForm onAddTask={handleAddTask} />
+
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-4">
         <TaskColumn title="Todo" />
         <TaskColumn title="Doing" />
         <TaskColumn title="Done" />
