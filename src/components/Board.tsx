@@ -1,9 +1,37 @@
+import { useState } from "react";
 import TaskColumn from "./TaskColumn";
 import TaskForm from "./TaskForm";
 
+type Task = {
+  id: string;
+  title: string;
+  status: "Todo" | "Done";
+};
+
 const Board = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
   const handleAddTask = (title: string) => {
-    console.log("Task Added:", { title });
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      {
+        id: Date.now().toString(),
+        title,
+        status: "Todo",
+      },
+    ]);
+  };
+
+  const handleRemoveTask = (taskId: string) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
+  const handleDropTask = (taskId: string, newStatus: "Todo" | "Done") => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, status: newStatus } : task
+      )
+    );
   };
 
   return (
@@ -12,10 +40,19 @@ const Board = () => {
 
       <TaskForm onAddTask={handleAddTask} />
 
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-4">
-        <TaskColumn title="Todo" />
-        <TaskColumn title="Doing" />
-        <TaskColumn title="Done" />
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+        <TaskColumn
+          title="Todo"
+          tasks={tasks.filter((task) => task.status === "Todo")}
+          onDropTask={handleDropTask}
+          onRemoveTask={handleRemoveTask}
+        />
+        <TaskColumn
+          title="Done"
+          tasks={tasks.filter((task) => task.status === "Done")}
+          onDropTask={handleDropTask}
+          onRemoveTask={handleRemoveTask}
+        />
       </div>
     </div>
   );
