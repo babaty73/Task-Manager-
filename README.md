@@ -14,8 +14,6 @@ A modern, full-stack task management application built with React, TypeScript, a
 - [🚀 Quick Start](#-quick-start)
 - [📋 Usage](#-usage)
 - [🏗️ Project Structure](#️-project-structure)
-- [🧪 Testing](#-testing)
-- [🚀 Deployment](#-deployment)
 
 ## ✨ Features
 
@@ -82,15 +80,6 @@ Ensure you have the following installed:
 4. **Access the application**
    Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Build for Production
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-The production build will be available in the `dist/` directory.
 
 ## � Usage
 
@@ -137,11 +126,6 @@ task-manager/
 └── README.md             # Project documentation
 ```
 
-### Inspiration
-- Modern task management applications
-- Open-source React ecosystem
-- Accessibility-first design principles
-
 ---
 
 <div align="center">
@@ -151,26 +135,3 @@ task-manager/
 [⬆️ Back to Top](#-task-manager)
 
 </div>
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
