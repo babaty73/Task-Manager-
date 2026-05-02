@@ -11,14 +11,14 @@ const TaskCard = ({ id, title, onRemove }: TaskCardProps) => {
 
   return (
     <div
-      className="bg-blue-100 p-4 rounded-lg shadow mb-4 hover:bg-blue-200 transition cursor-move relative group"
+      className="bg-blue-100 dark:bg-slate-700 dark:border-slate-600 border border-transparent p-4 rounded-lg shadow mb-4 hover:bg-blue-200 dark:hover:bg-slate-600 transition cursor-move relative group"
       draggable
       onDragStart={handleDragStart}
     >
-      <h3 className="font-semibold text-md">{title}</h3>
+      <h3 className="font-semibold text-md text-slate-900 dark:text-slate-100">{title}</h3>
       <button
         onClick={() => onRemove(id)}
-        className="absolute top-2 right-2 bg-black-800 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-black-900 transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-2 right-2 bg-slate-900 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-slate-700 transition-colors opacity-0 group-hover:opacity-100"
         title="Remove task"
       >
         <svg

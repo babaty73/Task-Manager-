@@ -26,11 +26,11 @@ function TaskColumn({ title, tasks, onDropTask, onRemoveTask }: TaskColumnProps)
 
   return (
     <div
-      className="bg-white rounded-xl shadow p-4 min-h-[300px]"
+      className="bg-white dark:bg-slate-800 dark:border-slate-700 border border-slate-200 rounded-xl shadow p-4 min-h-[300px] transition-colors duration-300"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <h2 className="text-lg font-semibold mb-4">{title}</h2>
+      <h2 className="text-lg font-semibold mb-4 text-slate-900 dark:text-slate-100">{title}</h2>
 
       <div className="space-y-3">
         {tasks.length > 0 ? (
@@ -43,7 +43,7 @@ function TaskColumn({ title, tasks, onDropTask, onRemoveTask }: TaskColumnProps)
             />
           ))
         ) : (
-          <p className="text-gray-500 text-sm">No tasks yet.</p>
+          <p className="text-gray-500 dark:text-slate-400 text-sm">No tasks yet.</p>
         )}
       </div>
     </div>

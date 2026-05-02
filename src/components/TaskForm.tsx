@@ -12,21 +12,17 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
 
     if (!title.trim()) return;
 
-    // For now, just log the task
     console.log("New Task:", { title });
 
-    // Call parent function if provided
     if (onAddTask) onAddTask(title);
 
-    // Reset form
     setTitle("");
-
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-4 rounded-xl shadow mb-6"
+      className="bg-white dark:bg-slate-800 dark:text-slate-100 p-4 rounded-xl shadow mb-6 transition-colors duration-300"
     >
       <h3 className="text-lg font-semibold mb-4">Add New Task</h3>
 
@@ -37,7 +33,7 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Task title"
-          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full p-2 border border-gray-300 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500"
         />
       </div>
       <button
